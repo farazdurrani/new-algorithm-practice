@@ -1,4 +1,4 @@
-package misc.maxsubarray;
+package maxsubarray;
 
 import java.util.Arrays;
 
