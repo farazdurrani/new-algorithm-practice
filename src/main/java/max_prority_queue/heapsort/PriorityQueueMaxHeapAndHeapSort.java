@@ -83,24 +83,46 @@ public class PriorityQueueMaxHeapAndHeapSort {
     System.out.println();
   }
 
-  private static void increaseKey(int i, int j) {
-    // TODO Auto-generated method stub
-
+  private static void increaseKey(int key, int index) {
+    if (a[index] > key) {
+      System.out.println("Bro, existing value is already big!");
+      return;
+    }
+    a[index] = key;
+    while (index >= 0 && a[parent(index)] < a[index]) {
+      exchange(index, parent(index));
+      index = parent(index);
+    }
   }
 
-  private static void insertKey(int i) {
-    // TODO Auto-generated method stub
+  private static int parent(int index) {
+    return index / 2;
+  }
 
+  private static void insertKey(int key) {
+    if (heapSize + 1 >= a.length) {
+      System.out.println("Heapoverflow!");
+      return;
+    }
+    heapSize++;
+    a[heapSize] = Integer.MIN_VALUE;
+    increaseKey(key, heapSize);
   }
 
   private static int max() {
-    // TODO Auto-generated method stub
-    return 0;
+    return a[0];
   }
 
-  private static void extractMax() {
-    // TODO Auto-generated method stub
-
+  private static int extractMax() {
+    if (heapSize < 0) {
+      System.out.println("nothing in the heap!");
+      return -1;
+    }
+    int max = max();
+    exchange(0, heapSize);
+    heapSize--;
+    maintainHeap(0);
+    return max;
   }
 
   private static void buildHeap() {
