@@ -67,6 +67,8 @@ public class PriorityQueueMaxHeapAndHeapSort {
     insertKey(7);
     increaseKey(222, 0);
     print(a, "After Increasing keys");
+    increaseKey(221, 0);
+    print(a, "After Increasing keys");
     increaseKey(99, 1);
     print(a, "After Increasing keys");
     increaseKey(45, 2);
