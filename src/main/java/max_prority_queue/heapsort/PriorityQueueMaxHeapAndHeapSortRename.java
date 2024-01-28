@@ -17,7 +17,7 @@ import java.util.stream.IntStream;
 //		shrink the heapSize,
 //		call maintainHeapProperty on the first element (because first element might be breaching max-heap-property).
 
-public class PriorityQueueMaxHeapAndHeapSort2 {
+public class PriorityQueueMaxHeapAndHeapSortRename {
   static int heapSize;
   //  static int[] a = {13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7};
   static int[] a = {13, -3, -25, 20, 7, 99, 12};
@@ -90,66 +90,29 @@ public class PriorityQueueMaxHeapAndHeapSort2 {
   }
 
   private static void increaseKey(int key, int i) {
-    if (a[i] > key) {
-      System.out.println("the existing key is bigger than this new key");
-      return;
-    }
-    a[i] = key;
-    while (i >= 0 && a[parent(i)] < a[i]) {
-      exchange(i, parent(i));
-      i = parent(i);
-    }
+
   }
 
   private static int parent(int i) {
-    return i / 2;
+    return -1;
   }
 
   private static void insertKey(int key) {
-    if (heapSize >= a.length) {
-      System.out.println("Heap overflow!");
-      return;
-    }
-    heapSize++;
-    a[heapSize - 1] = Integer.MIN_VALUE;
-    increaseKey(heapSize - 1, key);
+
   }
 
   private static int max() {
-    return a[0];
+    return -1;
   }
 
   private static void extractMax() {
-    if (heapSize < 1) {
-      System.out.println("Heap underflow!");
-      return;
-    }
-    exchange(0, heapSize - 1);
-    heapSize--;
-    maintainHeap(0);
   }
 
   private static void buildHeap() {
-    heapSize = a.length;
-    for (int i = a.length / 2; i >= 0; i--) {
-      maintainHeap(i);
-    }
   }
 
   private static void maintainHeap(int i) {
-    int left = leftChild(i);
-    int right = rightChild(i);
-    int largest = i;
-    if (left < heapSize && a[left] > a[largest]) {
-      largest = left;
-    }
-    if (right < heapSize && a[right] > a[largest]) {
-      largest = right;
-    }
-    if (largest != i) {
-      exchange(i, largest);
-      maintainHeap(largest);
-    }
+
   }
 
   private static void exchange(int x, int y) {
@@ -159,19 +122,13 @@ public class PriorityQueueMaxHeapAndHeapSort2 {
   }
 
   private static int rightChild(int i) {
-    return (2 * i) + 1;
+    return -1;
   }
 
   private static int leftChild(int i) {
-    return 2 * i;
+    return -1;
   }
 
   private static void heapSort() {
-    buildHeap();
-    for (int i = a.length - 1; i > 0; i--) {
-      exchange(0, i);
-      heapSize--;
-      maintainHeap(0);
-    }
   }
 }
