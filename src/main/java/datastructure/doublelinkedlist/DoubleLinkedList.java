@@ -46,6 +46,27 @@ public class DoubleLinkedList<E> {
     newList.delete(89);
     newList.insertAtFront(89);
     newList.delete(90);
+    list.printFromFront();
+    list.printInReverse();
+    System.out.println("Reversing!");
+    list.reverse();
+    list.printFromFront();
+    list.printInReverse();
+  }
+
+  private void reverse() {
+    Node<E> newTail = head;
+    Node<E> newHead = tail;
+    //todo remove above
+    Node<E> temp = head;
+    while (temp != null) {
+      Node<E> tempNext = temp.next;
+      temp.next = temp.prev;
+      temp.prev = tempNext;
+      temp = tempNext;
+    }
+    head = newHead;
+    tail = newTail;
   }
 
   private void delete(E data) {
@@ -156,6 +177,10 @@ public class DoubleLinkedList<E> {
     Node<E> next;
     Node<E> prev;
 
+//    public Node(Node<E> node) {
+//      this(node.data, node.prev, node.next);
+//    }
+
     public Node(E data) {
       this(data, null, null);
     }
@@ -164,6 +189,12 @@ public class DoubleLinkedList<E> {
       this.data = data;
       this.prev = prev;
       this.next = next;
+    }
+
+    @Override
+    public String toString() {
+      return String.format("%s<--prev%ncurrent==%s%nnext-->%s", prev != null ? prev.data : null, data,
+          next != null ? next.data : null);
     }
   }
 }
