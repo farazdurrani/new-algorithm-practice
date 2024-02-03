@@ -57,7 +57,6 @@ public class DoubleLinkedList<E> {
   private void reverse() {
     Node<E> newTail = head;
     Node<E> newHead = tail;
-    //todo remove above
     Node<E> temp = head;
     while (temp != null) {
       Node<E> tempNext = temp.next;
@@ -176,10 +175,6 @@ public class DoubleLinkedList<E> {
     E data;
     Node<E> next;
     Node<E> prev;
-
-//    public Node(Node<E> node) {
-//      this(node.data, node.prev, node.next);
-//    }
 
     public Node(E data) {
       this(data, null, null);
